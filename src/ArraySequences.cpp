@@ -67,7 +67,7 @@ int * find_sequences(int *arr, int len){
 					count2 = 1;
 			}
 		}
-		else if (count3 != -1 && count3 != 0 && (2 * g1 == (arr[i + 1] - arr[i])))
+		if (count3 != -1 && count3 != 0 && (2 * g1 == (arr[i + 1] - arr[i])))
 			count3++;
 		else if (count3 != -1){
 			if (count3 >= 2)
