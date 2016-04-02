@@ -78,7 +78,9 @@ int * find_sequences(int *arr, int len){
 			else {
 				g1 = arr[i + 1] - arr[i];
 				result[4] = i;
-				count3 = 1;
+				if ((count1==0&&count2==0)||(count1==-1&&count2==-1))
+				 count3 = 1;
+				else count3 = 0;
 			}
 		}
 		i++;
