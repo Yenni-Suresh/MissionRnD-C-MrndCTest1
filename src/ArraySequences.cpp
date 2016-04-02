@@ -33,5 +33,64 @@ Difficulty : Medium
 
 int * find_sequences(int *arr, int len){
 	//Return final array which has 6indexes [AP1_S,AP1_E,AP2_S,AP2_E,GP1_S,GP2_E]
-	return NULL;
+	if (arr == NULL || len < 0)
+		return NULL;
+	int result[6], i = 0, r = 0, d1 = 0, d2 = 0, g1, count1 = 0, count2 = 0, count3 = 0, j;
+	while (i < len - 1)
+	{
+		if (count1 != -1 && count1 != 0 && (d1 == (arr[i + 1] - arr[i])))
+			count1++;
+		else if (count1 != -1){
+			if (count1 >= 2)
+			{
+				result[1] = i;
+				count1 = -1;
+			}
+			else {
+				count1 = 1;
+				d1 = arr[i + 1] - arr[i];
+				result[0] = i;
+			}
+		}
+		if (count2 != -1 && count2 != 0 && (d2 == (arr[i + 1] - arr[i])))
+			count2++;
+		else if (count2 != -1){
+			if (count2 >= 2)
+			{
+				result[3] = i;
+				count2 = -1;
+			}
+			else {
+				d2 = arr[i + 1] - arr[i];
+				result[2] = i;
+				if (d1 != d2)
+					count2 = 1;
+			}
+		}
+		else if (count3 != -1 && count3 != 0 && (2 * g1 == (arr[i + 1] - arr[i])))
+			count3++;
+		else if (count3 != -1){
+			if (count3 >= 2)
+			{
+				result[5] = i;
+				count3 = -1;
+			}
+			else {
+				g1 = arr[i + 1] - arr[i];
+				result[4] = i;
+				count3 = 1;
+			}
+		}
+		i++;
+	}
+	if (count1 != -1)
+		result[1] = i;
+	else if (count2 != -1)
+		result[3] = i;
+	else if (count3 != -1)
+		result[5] = i;
+	for (i = 0; i<6; i++)
+		printf("\n %d", result[i]);
+	return result;
+		return result;
 }
