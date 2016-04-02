@@ -89,8 +89,6 @@ int * find_sequences(int *arr, int len){
 		result[3] = i;
 	else if (count3 != -1)
 		result[5] = i;
-	for (i = 0; i<6; i++)
-		printf("\n %d", result[i]);
 	return result;
 		return result;
 }
